@@ -21,7 +21,7 @@ export default function HomeScreen() {
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={{ padding: 10 }}
             >
-                <TrendingMovies/>
+                <TrendingMovies />
             </ScrollView>
         </View >
     );
