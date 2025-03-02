@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Sử dụng API thực tế thay vì exp://
-const BASE_URL = 'https://api.themoviedb.org/3/movie/popular';
+const BASE_URL = 'https://api.themoviedb.org/3/tv/popular';
 const API_KEY = 'fd72fbb755f23fa49c72918520fd2939';
 
 // Hàm lấy dữ liệu trending

@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
-import { fetchPopularMovie } from '../../services/listMovies';
+import { fetchPopularMovie } from '../../services/listTVShows';
 
 export default function MovieList() {
-    const [movieList, setMovieList] = useState([]);
+    const [TVList, setTVList] = useState([]);
 
     useEffect(() => {
         const getTrendingData = async () => {
             const data = await fetchPopularMovie();
-            setMovieList(data);
+            setTVList(data);
         };
         getTrendingData();
     }, []);
@@ -16,13 +16,13 @@ export default function MovieList() {
     return (
         <View className="items-center w-full flex-col">
             {/* Title */}
-            <Text className="text-white text-xl mx-4">MovieList</Text>
+            <Text className="text-white text-xl mx-4">TV List</Text>
 
             {/* Horizontal Movie List */}
             <FlatList
                 horizontal
                 showsHorizontalScrollIndicator={false}
-                data={movieList}
+                data={TVList}
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => (
                     <TouchableOpacity>
@@ -42,11 +42,11 @@ export default function MovieList() {
                                 numberOfLines={1}
                                 ellipsizeMode="tail"
                             >
-                                {item.title}
+                                {item.original_name}
                             </Text>
 
                             {/* Release Date */}
-                            <Text className="text-gray-400 text-sm">{item.release_date}</Text>
+                            <Text className="text-gray-400 text-sm">{item.first_air_date}</Text>
                         </View>
                     </TouchableOpacity>
                 )}

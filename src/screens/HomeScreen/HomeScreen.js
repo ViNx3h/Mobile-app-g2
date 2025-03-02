@@ -1,9 +1,10 @@
-import { SafeAreaView, StatusBar, View } from "react-native";
+import { SafeAreaView, ScrollView, StatusBar, Text, View } from "react-native";
 import Logo from "../../components/Logo/Logo";
 import SearchBar from "../../components/SearchBar/SearchBar";
-import { Text } from "react-native";
 import TrendingMovies from "../../components/TrendingMovies/TrendingMovies";
-import { ScrollView } from "react-native";
+import MovieList from "../MovieList/MovieList";
+import TVList from "../TVList/TVList";
+
 export default function HomeScreen() {
     return (
         <View className="flex-1 bg-neutral-800">
@@ -20,8 +21,17 @@ export default function HomeScreen() {
             <ScrollView
                 showsHorizontalScrollIndicator={false}
                 contentContainerStyle={{ padding: 10 }}
+                className="flex-col"
             >
-                <TrendingMovies />
+                <View>
+                    <TrendingMovies />
+                </View>
+                <View className="mb-2">
+                    < MovieList />
+                </View>
+                <View>
+                    <TVList />
+                </View>
             </ScrollView>
         </View >
     );
