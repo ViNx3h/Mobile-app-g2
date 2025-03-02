@@ -1,11 +1,13 @@
 // src/navigation/appRoutes.js
 import ActorInf from "../screens/ActorInf/ActorInf";
 import FavList from "../screens/FavList/FavList";
+import Genre from "../screens/Genre/Genre";
 import HisOrderList from "../screens/HisOrderList/HisOrderList";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import MovieDetails from "../screens/MovieDetails/MovieDetails";
 import MovieList from "../screens/MovieList/MovieList";
 import ProfileInf from "../screens/ProfileInf/ProfileInf";
+import SearchScreen from "../screens/SearchScreen/SearchScreen";
 import SignIn from "../screens/SignIn/SignIn";
 import SignUp from "../screens/SignUp/SignUp";
 
@@ -53,6 +55,16 @@ const appRoutes = [
     {
         name: "HisOrderList",
         component: HisOrderList,
+        header: false
+    },
+    {
+        name: "GenreMovie",
+        component: Genre,
+        header: false
+    },
+    {
+        name: "SearchScreen",
+        component: SearchScreen,
         header: false
     }
 
