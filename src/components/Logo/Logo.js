@@ -7,7 +7,7 @@ export default function Logo() {
     const [isMenuVisible, setMenuVisible] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-    const navigation = useNavigation(); // Điều hướng
+    const navigation = useNavigation();
     const handleLogout = () => {
         alert("Logged out");
         navigation.navigate("SignIn");
@@ -25,6 +25,9 @@ export default function Logo() {
                 <View className="absolute top-10 left-0 bg-gray-800 p-3 rounded-md shadow-lg w-40">
                     {isLoggedIn ? (
                         <>
+                            <TouchableOpacity onPress={() => navigation.replace("Home")}>
+                                <Text className="text-white text-sm py-1">Home</Text>
+                            </TouchableOpacity>
                             <TouchableOpacity onPress={() => navigation.navigate("ProfileInf")}>
                                 <Text className="text-white text-sm py-1">Profile</Text>
                             </TouchableOpacity>
