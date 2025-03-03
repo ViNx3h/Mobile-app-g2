@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 import { fetchPopularMovie } from '../../services/listTVShows';
+import { useNavigation } from "@react-navigation/native"; // Import useNavigation
 
 export default function MovieList() {
     const [TVList, setTVList] = useState([]);
+    const navigation = useNavigation(); // Hook điều hướng
 
     useEffect(() => {
         const getTrendingData = async () => {
@@ -25,7 +27,8 @@ export default function MovieList() {
                 data={TVList}
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => (
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate("TVlistDetails", { tvId: item.id })}
+                    >
                         <View className="bg-neutral-700 rounded-2xl shadow-lg p-4 m-2 w-44 h-60 items-center">
                             {/* Movie Poster */}
                             <Image

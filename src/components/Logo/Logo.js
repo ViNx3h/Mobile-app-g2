@@ -34,6 +34,9 @@ export default function Logo() {
                             <TouchableOpacity onPress={() => navigation.navigate("FavList")}>
                                 <Text className="text-white text-sm py-1">Favorite Movies</Text>
                             </TouchableOpacity>
+                            <TouchableOpacity onPress={() => navigation.navigate("ActorList")}>
+                                <Text className="text-white text-sm py-1">Actors</Text>
+                            </TouchableOpacity>
                             <TouchableOpacity onPress={() => navigation.navigate("GenreMovie")}>
                                 <Text className="text-white text-sm py-1">Genre</Text>
                             </TouchableOpacity>
