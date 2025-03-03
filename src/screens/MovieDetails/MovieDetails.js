@@ -73,7 +73,7 @@ export default function MovieDetails() {
                         <Text className="text-white font-bold">Language: </Text>
                         {movieDetail.original_language.toUpperCase()}
                     </Text>
-                    <Trailer movieId={movieId} />
+                    <Trailer movieId={movieId} genre="movie" />
                 </View>
 
                 {/* Footer nằm ở cuối nội dung */}

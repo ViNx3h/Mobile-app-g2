@@ -3,13 +3,13 @@ import { View, ActivityIndicator, Text } from "react-native";
 import WebView from "react-native-webview";
 import { fetchTrailer } from "../../services/getTrailer";
 
-export default function Trailer({ movieId }) {
+export default function Trailer({ movieId, genre }) {
     const [trailerKey, setTrailerKey] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const getTrailer = async () => {
-            const key = await fetchTrailer(movieId);
+            const key = await fetchTrailer(movieId, genre);
             setTrailerKey(key);
             setLoading(false);
         };
@@ -28,7 +28,7 @@ export default function Trailer({ movieId }) {
     if (!trailerKey) {
         return (
             <View className="w-full justify-center items-center py-5">
-                <Text className="text-gray-400">There is no trailer for this movie...</Text>
+                <Text className="text-gray-400">There is no trailer...</Text>
             </View>
         );
     }
