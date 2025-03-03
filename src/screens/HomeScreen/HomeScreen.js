@@ -4,12 +4,13 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import TrendingMovies from "../../components/TrendingMovies/TrendingMovies";
 import MovieList from "../MovieList/MovieList";
 import TVList from "../TVList/TVList";
+import Footer from "../../components/Footer/Footer";
 
 export default function HomeScreen() {
     return (
         <View className="flex-1 bg-neutral-800">
             {/*Logo and Search Bar */}
-            <SafeAreaView className="flex-row justify-between items-center mx-4">
+            <SafeAreaView style={{ position: "relative", zIndex: 50 }} className="flex-row justify-between items-center mx-4">
                 <StatusBar style="light" />
                 <Logo />
                 <Text className="text-white text-3xl font-bold">
@@ -20,7 +21,6 @@ export default function HomeScreen() {
             {/*TrendingMovies*/}
             <ScrollView
                 showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{ padding: 10 }}
                 className="flex-col"
             >
                 <View>
@@ -32,6 +32,8 @@ export default function HomeScreen() {
                 <View>
                     <TVList />
                 </View>
+                {/* Footer nằm ở cuối nội dung */}
+                <Footer />
             </ScrollView>
         </View >
     );
