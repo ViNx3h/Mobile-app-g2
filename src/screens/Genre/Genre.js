@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, TouchableOpacity, Image, ActivityIndicator } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Image, ActivityIndicator, Dimensions } from "react-native";
 import { fetchGenres, fetchMoviesByGenre } from "../../services/genre";
 import Logo from "../../components/Logo/Logo";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import Footer from "../../components/Footer/Footer";
+import { useNavigation } from "@react-navigation/native";
+
+const { width } = Dimensions.get("window");
+const itemSize = (width - 40) / 3; // Trừ padding rồi chia 3
 
 export default function GenreList() {
     const [genres, setGenres] = useState([]);
@@ -13,6 +17,7 @@ export default function GenreList() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const navigation = useNavigation();
 
     useEffect(() => {
         const getGenres = async () => {
@@ -45,7 +50,7 @@ export default function GenreList() {
             <SafeAreaView style={{ position: "relative", zIndex: 50 }} className="flex-row justify-between items-center mx-4">
                 <StatusBar style="light" />
                 <Logo />
-                <Text className="text-white text-3xl font-bold">Movies</Text>
+                <Text className="text-white text-3xl font-bold">Genre List</Text>
                 <SearchBar />
             </SafeAreaView>
 
@@ -75,19 +80,20 @@ export default function GenreList() {
                     </View>
                 )}
                 renderItem={({ item }) => (
-                    <TouchableOpacity>
-                        <View className="bg-neutral-700 rounded-2xl shadow-lg p-4 m-2 w-44 h-60 items-center">
+                    <TouchableOpacity onPress={() => navigation.navigate("MovieDetails", { movieId: item.id })}
+                    >
+                        <View className="bg-neutral-700 rounded-2xl shadow-lg p-4 m-2" style={{ width: itemSize, height: 220 }}>
                             <Image
                                 source={{
                                     uri: item.poster_path
                                         ? `https://image.tmdb.org/t/p/w500${item.poster_path}`
                                         : `https://image.tmdb.org/t/p/w500${item.backdrop_path}`,
                                 }}
-                                style={{ width: 120, height: 160, borderRadius: 10 }}
+                                style={{ width: itemSize - 20, height: 160, borderRadius: 10 }}
                                 resizeMode="cover"
                             />
                             <Text className="text-white text-sm mt-2 text-center">{item.title}</Text>
-                            <Text className="text-gray-400 text-sm">{item.release_date}</Text>
+                            <Text className="text-gray-400 text-xs">{item.release_date}</Text>
                         </View>
                     </TouchableOpacity>
                 )}

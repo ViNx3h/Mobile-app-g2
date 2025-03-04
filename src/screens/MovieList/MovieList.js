@@ -18,7 +18,7 @@ export default function MovieList() {
     return (
         <View className="items-center w-full flex-col">
             {/* Title */}
-            <Text className="text-white text-xl mx-4">MovieList</Text>
+            <Text className="text-white text-xl mx-4">Movies List</Text>
 
             {/* Horizontal Movie List */}
             <FlatList
