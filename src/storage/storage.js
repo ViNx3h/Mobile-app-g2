@@ -6,7 +6,7 @@ const userData = [
         name: "Tai Khoan Clone",
         username: "ltt",
         password: "123",
-        phone: "0949415422",
+        phone: "081722339",
         avatar: "https://example.com/avatar.jpg",
         dob: "2000-02-25",
         gender: "male",
