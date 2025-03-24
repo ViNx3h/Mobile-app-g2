@@ -58,7 +58,7 @@ export default function SignIn() {
       />
       <TextInput
         className="w-full h-12 border border-gray-700 bg-gray-800 rounded-lg px-4 text-white mb-4"
-        placeholder="Nhập mật khẩu..."
+        placeholder="Enter password..."
         placeholderTextColor="#aaa"
         value={password}
         onChangeText={setPassword}
