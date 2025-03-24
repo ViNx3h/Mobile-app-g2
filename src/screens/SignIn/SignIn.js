@@ -73,6 +73,12 @@ export default function SignIn() {
       </TouchableOpacity>
       <TouchableOpacity
         className="mt-4"
+        onPress={() => navigation.navigate("SignUp")}
+      >
+        <Text className="text-blue-400 text-sm">Sign up</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        className="mt-4"
         onPress={() => navigation.navigate("ForgotPassword")}
       >
         <Text className="text-blue-400 text-sm">Forgot password?</Text>
