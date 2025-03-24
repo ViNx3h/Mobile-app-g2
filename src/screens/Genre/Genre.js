@@ -61,7 +61,7 @@ export default function GenreList() {
                 showsVerticalScrollIndicator={false}
                 keyExtractor={(item) => item.id.toString()}
                 ListHeaderComponent={() => (
-                    <View className="p-4">
+                    <View className="bg-neutral-700 rounded-2xl shadow-lg p-2 items-center">
                         <FlatList
                             data={genres}
                             horizontal
@@ -92,8 +92,14 @@ export default function GenreList() {
                                 style={{ width: itemSize - 20, height: 160, borderRadius: 10 }}
                                 resizeMode="cover"
                             />
-                            <Text className="text-white text-sm mt-2 text-center">{item.title}</Text>
-                            <Text className="text-gray-400 text-xs">{item.release_date}</Text>
+                            <Text
+                                className="text-white mt-2 text-sm font-semibold text-center"
+                                numberOfLines={2}
+                                ellipsizeMode="tail"
+                                style={{ height: 40 }}
+                            >
+                                {item.title.length > 20 ? item.title.substring(0, 20) + "..." : item.title}
+                            </Text>
                         </View>
                     </TouchableOpacity>
                 )}
