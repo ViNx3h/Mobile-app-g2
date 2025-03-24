@@ -61,11 +61,6 @@ const appRoutes = [
     header: false,
   },
   {
-    name: "HisOrderList",
-    component: HisOrderList,
-    header: false,
-  },
-  {
     name: "GenreMovie",
     component: Genre,
     header: false,
