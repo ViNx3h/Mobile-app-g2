@@ -4,7 +4,6 @@ import ActorList from "../screens/ActorList/ActorList";
 import FavList from "../screens/FavList/FavList";
 import Genre from "../screens/Genre/Genre";
 import ForgotPassword from "../screens/ForgotPassword/ForgotPassword";
-import HisOrderList from "../screens/HisOrderList/HisOrderList";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import MovieDetails from "../screens/MovieDetails/MovieDetails";
 import MovieList from "../screens/MovieList/MovieList";
