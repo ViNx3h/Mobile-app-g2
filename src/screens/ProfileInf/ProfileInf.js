@@ -9,6 +9,9 @@ import {
 import React, { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Footer from "../../components/Footer/Footer";
+import Logo from "../../components/Logo/Logo";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 export default function ProfileInf() {
   const [user, setUser] = useState(null);
@@ -21,7 +24,7 @@ export default function ProfileInf() {
         if (data) {
           setUser(JSON.parse(data));
           // console.log(data);
-          
+
         }
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -50,13 +53,19 @@ export default function ProfileInf() {
 
   return (
     <SafeAreaView className="flex-1 bg-gray-900">
+      <SafeAreaView style={{ position: "relative", zIndex: 50 }} className="flex-row justify-between items-center mx-4">
+        <StatusBar style="light" />
+        <Logo />
+        <Text className="text-white text-3xl font-bold">Profile</Text>
+        <SearchBar />
+      </SafeAreaView>
       <StatusBar barStyle="light-content" backgroundColor="#111827" />
       <ScrollView className="flex-1 p-6 h-10">
         {/* Avatar + Name */}
         <View className="items-center mb-6 d-flex">
           <Image
-      
-            source={user.avatar }
+
+            source={user.avatar}
             className="w-36 h-36 rounded-full border-4 border-gray-700 shadow-lg"
           />
 
@@ -70,36 +79,40 @@ export default function ProfileInf() {
 
           {/* Phone */}
           <View className="flex-row items-center mb-2">
-            <Text className="text-gray-300 text-xl p-2">    📞    Phone     : </Text>
+            <Text className="text-gray-300 text-xl p-2">📞Phone: </Text>
             <Text className="text-gray-300 text-xl">{user.phone}</Text>
           </View>
 
           {/* DOB */}
           <View className="flex-row items-center mb-2">
-            <Text className="text-gray-300 text-xl p-2">    🎂    BirthDay : </Text>
+            <Text className="text-gray-300 text-xl p-2">🎂BirthDay : </Text>
             <Text className="text-gray-300 text-xl">{user.dob}</Text>
           </View>
 
           {/* Gender */}
           <View className="flex-row items-center mb-2">
-            <Text className="text-gray-300 text-xl p-2">    🧑    Gender    : </Text>
+            <Text className="text-gray-300 text-xl p-2">🧑Gender: </Text>
             <Text className="text-gray-300 text-xl">{user.gender === "male" ? "Male" : "Female"}</Text>
           </View>
 
           {/* Address */}
           <View className="flex-row items-center mb-2">
-            <Text className="text-gray-300 text-xl p-2">    📍    Address  :</Text>
+            <Text className="text-gray-300 text-xl p-2">📍Address  :</Text>
             <Text className="text-gray-300 text-xl">{user.address}</Text>
           </View>
 
           {/* Joined Date */}
           <View className="flex-row items-center">
-            <Text className="text-gray-300 text-xl p-2">    📅    Create Account :</Text>
+            <Text className="text-gray-300 text-xl p-2">📅Create Account :</Text>
             <Text className="text-gray-300 text-xl">{new Date(user.createdAt).toLocaleDateString()}</Text>
           </View>
         </View>
 
       </ScrollView>
+
+      <Footer />
     </SafeAreaView>
+
+
   );
 }
