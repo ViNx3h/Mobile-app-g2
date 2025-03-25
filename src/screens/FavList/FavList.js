@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, Image, ActivityIndicator, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native"; // Import useNavigation
-import { fetchFavoriteMovies } from "../../storage/api";
+
+import { fetchFavoriteMovies, fetchMovieById } from "../../storage/api";
 import Footer from "../../components/Footer/Footer";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { fetchMovieDetail } from "../../services/movieDetails";
+// import { fetchMovieDetail } from "../../services/movieDetails";
+
 import Logo from "../../components/Logo/Logo";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import { StatusBar } from "expo-status-bar";
@@ -28,7 +30,9 @@ export default function FavList() {
 
 
     const getMovieDetail = async () => {
-        const data = await fetchMovieDetail(movieId);
+
+        const data = await fetchMovieById(movieId);
+
         setMovieDetail(data);
     };
 
