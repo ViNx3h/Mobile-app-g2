@@ -7,22 +7,21 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { useRoute } from "@react-navigation/native";
-import { useNavigation } from "@react-navigation/native";
-import Footer from "../../components/Footer/Footer";
-import SearchBar from "../../components/SearchBar/SearchBar";
+import { useRoute, useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
+import Footer from "../../components/Footer/Footer";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import Logo from "../../components/Logo/Logo";
 
 const API_KEY = "fd72fbb755f23fa49c72918520fd2939"; // Thay bằng API key của bạn
 
 export default function SearchScreen() {
   const route = useRoute();
-  const { query } = route.params; // Nhận query từ SearchBar
+  const { query } = route.params;
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigation = useNavigation(); // Hook điều hướng
+  const navigation = useNavigation();
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -35,7 +34,7 @@ export default function SearchScreen() {
         const data = await response.json();
         setMovies(data.results || []);
       } catch (error) {
-        console.error("Error when searching for a movie:", error);
+        console.error("Lỗi khi tìm kiếm phim:", error);
       } finally {
         setLoading(false);
       }
@@ -45,76 +44,60 @@ export default function SearchScreen() {
   }, [query]);
 
   return (
-    <View className="bg-neutral-800" style={{ flex: 1, padding: 16 }}>
+    <View className="bg-neutral-900 flex-1">
       {/* Header */}
-      <SafeAreaView
-        style={{ position: "relative", zIndex: 50 }}
-        className="flex-row justify-between items-center mx-4"
-      >
+      <SafeAreaView className="flex-row items-center justify-between px-4 py-3 border-b border-gray-700">
         <StatusBar style="light" />
         <Logo />
-        <Text className="text-white text-3xl font-bold">Movies</Text>
+        <Text className="text-white text-xl font-bold">Movies</Text>
         <SearchBar />
       </SafeAreaView>
 
-      {/* nội dung */}
-      <Text
-        style={{
-          fontSize: 20,
-          fontWeight: "bold",
-          marginBottom: 10,
-          color: "white",
-        }}
-      >
-        Search results: {query}
-      </Text>
-      {loading ? (
-        <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
-          <ActivityIndicator size="large" color="blue" />
-        </View>
-      ) : movies.length > 0 ? (
-        <FlatList
-          data={movies}
-          keyExtractor={(item) => item.id.toString()}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() =>
-                navigation.navigate("MovieDetails", { movieId: item.id })
-              }
-            >
-              <View style={{ flexDirection: "row", marginBottom: 10 }}>
+      {/* Nội dung */}
+      <View className="flex-1 px-4 py-3">
+        <Text className="text-white text-lg font-semibold mb-4">
+          Search results: "{query}"
+        </Text>
+
+        {loading ? (
+          <View className="flex-1 justify-center items-center">
+            <ActivityIndicator size="large" color="blue" />
+          </View>
+        ) : movies.length > 0 ? (
+          <FlatList
+            data={movies}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                onPress={() => navigation.navigate("MovieDetails", { movieId: item.id })}
+                className="flex-row items-center bg-gray-800 p-3 mb-3 rounded-lg shadow-md hover:bg-gray-700"
+              >
                 <Image
                   source={{
                     uri: item.poster_path
                       ? `https://image.tmdb.org/t/p/w200${item.poster_path}`
                       : "https://via.placeholder.com/80x120?text=No+Image",
                   }}
-                  style={{ width: 80, height: 120, borderRadius: 8 }}
+                  className="w-20 h-30 rounded-lg shadow-lg"
                 />
-                <View style={{ marginLeft: 10, flex: 1 }}>
-                  <Text
-                    style={{ fontSize: 16, fontWeight: "bold", color: "white" }}
-                  >
+                <View className="ml-4 flex-1">
+                  <Text className="text-white text-lg font-semibold">
                     {item.title}
                   </Text>
-                  <Text
-                    style={{ fontSize: 16, fontWeight: "bold", color: "white" }}
-                  >
-                    {item.release_date || "No release date."}
+                  <Text className="text-gray-400 text-sm">
+                    {item.release_date || "Không có ngày phát hành"}
                   </Text>
                 </View>
-              </View>
-            </TouchableOpacity>
-          )}
-        />
-      ) : (
-        <Text style={{ fontSize: 16, fontWeight: "bold", color: "white" }}>
-          No movies found.
-        </Text>
-      )}
-      <Footer />
+              </TouchableOpacity>
+            )}
+            ListFooterComponent={<Footer />}
+          />
+        ) : (
+          <Text className="text-gray-400 text-center text-lg">
+            No movies found.
+          </Text>
+        )}
+      </View>
     </View>
   );
 }
