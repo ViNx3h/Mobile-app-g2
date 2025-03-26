@@ -12,6 +12,7 @@ import SearchScreen from "../screens/SearchScreen/SearchScreen";
 import SignIn from "../screens/SignIn/SignIn";
 import SignUp from "../screens/SignUp/SignUp";
 import TVlistDetails from "../screens/TVlistDetails/TVlistDetails";
+import UpdateProfile from "../screens/UpdateProfile/UpdateProfile";
 
 const appRoutes = [
   {
@@ -57,6 +58,11 @@ const appRoutes = [
   {
     name: "ProfileInf",
     component: ProfileInf,
+    header: false,
+  },
+  {
+    name: "UpdateProfile",
+    component: UpdateProfile,
     header: false,
   },
   {
