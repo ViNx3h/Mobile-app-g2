@@ -50,7 +50,7 @@ export default function SignIn() {
       <Text className="text-2xl font-bold text-white mb-5">Log In</Text>
       <TextInput
         className="w-full h-12 border border-gray-700 bg-gray-800 rounded-lg px-4 text-white mb-4"
-        placeholder="Nhập username..."
+        placeholder="Enter username..."
         placeholderTextColor="#aaa"
         value={username}
         onChangeText={setUsername}

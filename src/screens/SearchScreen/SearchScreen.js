@@ -46,7 +46,7 @@ export default function SearchScreen() {
   return (
     <View className="bg-neutral-900 flex-1">
       {/* Header */}
-      <SafeAreaView className="flex-row items-center justify-between px-4 py-3 border-b border-gray-700">
+      <SafeAreaView style={{ position: "relative", zIndex: 50 }} className="flex-row justify-between items-center mx-4">
         <StatusBar style="light" />
         <Logo />
         <Text className="text-white text-xl font-bold">Movies</Text>
@@ -79,6 +79,8 @@ export default function SearchScreen() {
                       : "https://via.placeholder.com/80x120?text=No+Image",
                   }}
                   className="w-20 h-30 rounded-lg shadow-lg"
+                  style={{ width: 80, height: 120 }}
+                  resizeMode="cover"
                 />
                 <View className="ml-4 flex-1">
                   <Text className="text-white text-lg font-semibold">
