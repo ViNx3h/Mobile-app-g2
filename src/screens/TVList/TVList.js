@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native';
 import { fetchPopularMovie } from '../../services/listTVShows';
-import { useNavigation } from "@react-navigation/native"; // Import useNavigation
+import { useNavigation } from "@react-navigation/native"; 
 
 export default function MovieList() {
     const [TVList, setTVList] = useState([]);
-    const navigation = useNavigation(); // Hook điều hướng
+    const navigation = useNavigation(); 
 
     useEffect(() => {
         const getTrendingData = async () => {
@@ -20,7 +20,6 @@ export default function MovieList() {
             {/* Title */}
             <Text className="text-white text-xl mx-4">TV List</Text>
 
-            {/* Horizontal Movie List */}
             <FlatList
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -39,7 +38,6 @@ export default function MovieList() {
                                 }}
                                 style={{ width: 120, height: 160, borderRadius: 10 }}
                             />
-                            {/* Movie Title (Truncated) */}
                             <Text
                                 className="text-white mt-2 text-base font-semibold text-center"
                                 numberOfLines={1}
@@ -47,8 +45,6 @@ export default function MovieList() {
                             >
                                 {item.original_name}
                             </Text>
-
-                            {/* Release Date */}
                             <Text className="text-gray-400 text-sm">{item.first_air_date}</Text>
                         </View>
                     </TouchableOpacity>

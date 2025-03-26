@@ -9,7 +9,6 @@ import Footer from "../../components/Footer/Footer";
 export default function HomeScreen() {
     return (
         <View className="flex-1 bg-neutral-800">
-            {/*Logo and Search Bar */}
             <SafeAreaView style={{ position: "relative", zIndex: 50 }} className="flex-row justify-between items-center mx-4">
                 <StatusBar style="light" />
                 <Logo />
@@ -18,7 +17,6 @@ export default function HomeScreen() {
                 </Text>
                 <SearchBar />
             </SafeAreaView>
-            {/*TrendingMovies*/}
             <ScrollView
                 showsHorizontalScrollIndicator={false}
                 className="flex-col"
@@ -32,7 +30,6 @@ export default function HomeScreen() {
                 <View>
                     <TVList />
                 </View>
-                {/* Footer nằm ở cuối nội dung */}
                 <Footer />
             </ScrollView>
         </View >
